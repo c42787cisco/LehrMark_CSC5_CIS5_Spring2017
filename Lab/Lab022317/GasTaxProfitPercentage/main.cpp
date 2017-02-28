@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     float pctTax,pctPrft;//Percentage tax, Percentage profit
     
     //Input data
-    cout<<"What price did you pay at the pump $'s/gallon"<<endl;
+    cout<<"What price did you pay at the pump $'s/gallon $";
     cin>>pumpPr;
     
     //Map inputs to outputs or process the data
