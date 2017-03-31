@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=GameOfCraps_V4
+PROJECTNAME=Gaddis_8thEd_Chap5_Prob2_AsciiTable
 
 # Active Configuration
 DEFAULTCONF=Debug

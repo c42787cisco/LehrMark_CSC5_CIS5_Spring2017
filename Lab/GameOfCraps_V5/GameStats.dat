@@ -1,0 +1,10 @@
+Total time to play these Games in integer seconds = 1
+Total number of Games = 30000000
+Number of games won   = 14788449
+Number of games lost  = 15211551
+Total wins and losses = 30000000
+Percentage wins       = 49.29%
+Percentage losses     = 50.71%
+Maximum number of throws in a game = 64
+Average throw per game=3.38
+Ratio of Longest to shortest game = 10^1.81

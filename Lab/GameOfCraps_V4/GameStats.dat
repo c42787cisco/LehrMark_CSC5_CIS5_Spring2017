@@ -1,8 +1,8 @@
 Total number of Games = 100000
-Number of games won   = 49327
-Number of games lost  = 50673
+Number of games won   = 49203
+Number of games lost  = 50797
 Total wins and losses = 100000
-Percentage wins       = 49.33%
-Percentage losses     = 50.67%
-Maximum number of throws in a game = 44
+Percentage wins       = 49.20%
+Percentage losses     = 50.80%
+Maximum number of throws in a game = 41
 Average throw per game=3.37

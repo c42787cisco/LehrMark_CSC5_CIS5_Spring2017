@@ -1,8 +1,8 @@
 /* 
- * File:   main.cpp
  * Author: Dr. Mark E. Lehr
- * Created on March 28th, 2017, 11:42 AM
- * Purpose:  Simulate a Craps Game
+ * Created on March 31st, 2017, 11:42 AM
+ * Purpose:  Project 1 - Simulate a Craps Game.
+ *           Betting will be implemented in Project 2
  */
 
 //System Libraries
@@ -11,6 +11,8 @@
 #include <cstdlib>   //Srand to set the seed
 #include <fstream>   //File I/O
 #include <iomanip>   //Format the output
+#include <string>    //Strings
+#include <cmath>     //Math functions
 using namespace std; //Name-space under which system libraries exist
 
 //User Libraries
@@ -29,7 +31,7 @@ int main(int argc, char** argv) {
     ifstream in;               //Input File
     ofstream out;              //Output File
     int nGames,wins=0,losses=0;//Number of games, wins/losses
-    int mxThrw=0,numThrw=0,lmGames=100000;//Game limiter and Throw statistics
+    int mxThrw=0,numThrw=0,lmGames=100000000;//Game limiter and Throw statistics
     
     //Initialize variables
     string inName="GameInfo.dat";   //String Name
@@ -40,8 +42,9 @@ int main(int argc, char** argv) {
     nGames=nGames>lmGames?lmGames:nGames;//Limit games if to high
     
     //Play the game the prescribed number of times.
+    int beg=time(0);//Time the game play
     for(int game=1;game<=nGames;game++){
-        //Throw dice and sum
+        //Throw dice and sum, keep track of number of throws in a game
         int gmThrw=1;
         char die1=rand()%6+1;//[1,6]
         char die2=rand()%6+1;//[1,6]
@@ -61,23 +64,26 @@ int main(int argc, char** argv) {
                     char die1=rand()%6+1;//[1,6]
                     char die2=rand()%6+1;//[1,6]
                     char sum2=die1+die2;
-                    gmThrw++;
+                    gmThrw++;//Increment the number of throws
                     if(sum2==7){
                         losses++;
                         thrwAgn=false;
                     }else if(sum1==sum2){
                         wins++;
                         thrwAgn=false;
-                    }
-                }while(thrwAgn);//do-while
+                    }//end of dependent if-else
+                }while(thrwAgn);//end of do-while
             }
-        }
+        }//end of switch
+        //Keep track of total throws and max throws
         numThrw+=gmThrw;
         if(mxThrw<gmThrw)mxThrw=gmThrw;//Independent if
-    }
+    }//end of for-loop
+    int end=time(0);//End time of Game play
     
     //Output the game statistics to the screen
     cout<<fixed<<setprecision(2)<<showpoint;
+    cout<<"Total time to play these Games in integer seconds = "<<end-beg<<endl;
     cout<<"Total number of Games = "<<nGames<<endl;
     cout<<"Number of games won   = "<<wins<<endl;
     cout<<"Number of games lost  = "<<losses<<endl;
@@ -88,9 +94,11 @@ int main(int argc, char** argv) {
             <<static_cast<float>(losses)/nGames*PERCENT<<"%"<<endl;
     cout<<"Maximum number of throws in a game = "<<mxThrw<<endl;
     cout<<"Average throw per game="<<static_cast<float>(numThrw)/nGames<<endl;
+    cout<<"Ratio of Longest to shortest game = 10^"<<log10(mxThrw)<<endl;
     
     //Output the game statistics to a file
     out<<fixed<<setprecision(2)<<showpoint;
+    out<<"Total time to play these Games in integer seconds = "<<end-beg<<endl;
     out<<"Total number of Games = "<<nGames<<endl;
     out<<"Number of games won   = "<<wins<<endl;
     out<<"Number of games lost  = "<<losses<<endl;
@@ -101,6 +109,7 @@ int main(int argc, char** argv) {
             <<static_cast<float>(losses)/nGames*PERCENT<<"%"<<endl;
     out<<"Maximum number of throws in a game = "<<mxThrw<<endl;
     out<<"Average throw per game="<<static_cast<float>(numThrw)/nGames<<endl;
+    out<<"Ratio of Longest to shortest game = 10^"<<log10(mxThrw)<<endl;
     
     //Close Files and Exit stage right!
     in.close();
