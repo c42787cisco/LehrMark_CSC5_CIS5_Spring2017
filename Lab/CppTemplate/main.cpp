@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
  * Author: Dr. Mark E. Lehr
- * Created on February 14, 2017, 11:32 AM
+ * Created on April 4th, 2017, 11:32 AM
  * Purpose:  Template to be utilized in creating
  *           solutions to problems in our CSC/CIS 5 
  *           class.
